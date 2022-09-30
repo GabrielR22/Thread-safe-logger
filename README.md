@@ -5,6 +5,7 @@ Any bugs or suggestions, feel free to contact me.
 My discord : Rovug#1023
 
 Thanks for your attention!
+
 //---------------------------
 
 This is a thread safe logger designed by me. It was used in conjuction with another code to log data to SQL.
