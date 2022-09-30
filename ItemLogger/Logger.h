@@ -1,5 +1,6 @@
 #pragma once
 
+//This is the structure to be logged, modify it to your needs.
 struct log_data
 {
 	unsigned int id;
