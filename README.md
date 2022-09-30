@@ -9,7 +9,7 @@ Thanks for your attention!
 //---------------------------
 
 This is a thread safe logger designed by me. It was used in conjuction with another code to log data to SQL.
-This code is made to be implemented in your project, not to be used as DLL, LIB or EXE.
+This code is developed to be implemented in your project, not to be used as DLL, LIB or EXE.
 
 The code is very well commented, but below there is some details about it's usage: 
 
