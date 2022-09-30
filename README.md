@@ -17,15 +17,20 @@ You need to define the data you are going to log inside this struct:
 
 struct log_data
 {
+
 	unsigned int id;
+
 	char Name[16];
+
 };
 
 
 //In your code, create a new log file and add data to it.
+
 log_data log = { counter, "new log added" };
 
 //adds the item to the log queue..
+
 logger.LogItem(log);
 
 Inside the function void LoggerThread::MainLoop(), you are going to define what it's going to do with the log, either print to CLI, add to a SQL database or your needs.
