@@ -11,7 +11,7 @@
 //IO
 #include <iostream>
 
-#include "Source.h"
+#include "Logger.h"
 
 void LoggerThread::MainLoop()
 {
@@ -22,7 +22,7 @@ void LoggerThread::MainLoop()
 		while(!LogQueue.empty())
 		{
 			//Request the lock.
-			LogMutex.lock();
+			std::lock_guard Mutex(LogMutex);
 
 			//gets the first element from the queue.
 			const log_data & Log = LogQueue.front();
@@ -32,20 +32,19 @@ void LoggerThread::MainLoop()
 			//done with the element ? remove it from the queue.
 			LogQueue.pop();
 
-			LogMutex.unlock();
 		}
-
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 }
 
-//Creats a single static Logger.
-static LoggerThread Logger;
-
 int main()
 {
+	// Both LoggerThread and LoggerInterface need to live through the entire life of the program.
+	LoggerThread LoggerThread;
+
 	//Creates the main interface class
-	LoggerInterface logger(&Logger, []{Logger.MainLoop(); });
+	const LoggerInterface logger(&LoggerThread, [&]{LoggerThread.MainLoop(); });
 
 	unsigned int counter = 0;
 
@@ -60,7 +59,7 @@ int main()
 		logger.LogItem(log);
 	}
 
-	logger.Exit();
+	LoggerThread.Exit();
 
 }
 

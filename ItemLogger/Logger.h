@@ -51,17 +51,13 @@ public:
 	}
 
 	//adds an element to be logged.
-	void LogItem(const log_data & log) const
+	void LogItem(const log_data& log) const
 	{
-		//ensure we are thread safe.
-		ThreadClass->GetMutex().lock();
+		std::lock_guard Mutex(ThreadClass->GetMutex());
 
 		//adds the element to the Logger.
 		ThreadClass->LogQueue.emplace(log);
-
-		//Unlocks the mutex 
-		ThreadClass->GetMutex().unlock();
-	};
+	}
 
 };
 
