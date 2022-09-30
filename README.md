@@ -1,15 +1,34 @@
 # Thread-safe-logger
 
+Any bugs or suggestions, feel free to contact me.
+
+My discord : Rovug#1023
+
+Thanks for your attention!
+//---------------------------
+
 This is a thread safe logger designed by me. It was used in conjuction with another code to log data to SQL.
 
-Feel free to copy this code and use in your projects.
+The solution files are just for design process and not for direct usage.
 
-Any bugs and tips on improvement, please let me know.
+This code is made to be implemented in your project and from there use it.
 
-//////////////////-----------------------------------------------------/////////////////
+The code is very well commented, but below there is some details about it's usage: 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+You need to define the data you are going to log inside this struct:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+struct log_data
+{
+	unsigned int id;
+	char Name[16];
+};
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+//In your code, create a new log file and add data to it.
+log_data log = { counter, "new log added" };
+
+//adds the item to the log queue..
+logger.LogItem(log);
+
+Inside the function void LoggerThread::MainLoop(), you are going to define what it's going to do with the log, either print to CLI, add to a SQL database or your needs.
+
