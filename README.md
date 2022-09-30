@@ -7,13 +7,10 @@ My discord : Rovug#1023
 Thanks for your attention!
 //---------------------------
 
-
 This is a thread safe logger designed by me. It was used in conjuction with another code to log data to SQL.
-
-The solution files are just for design process and not for direct usage.
-
 This code is made to be implemented in your project, not to be used as DLL, LIB or EXE.
 
+The solution files are just for design process and not for direct usage.
 The code is very well commented, but below there is some details about it's usage: 
 
 You need to define the data you are going to log inside this struct:
